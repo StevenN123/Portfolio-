@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Steven Nguyen | Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Inter', sans-serif;
+      background:#0f172a;
+      color:white;
+      line-height:1.6;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      position:fixed;
+      width:100%;
+      top:0;
+      z-index:1000;
+      background:rgba(15,23,42,0.95);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-content{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 0;
+    }
+
+    .logo{
+      font-size:1.4rem;
+      font-weight:700;
+      color:#38bdf8;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:25px;
+    }
+
+    .nav-links a{
+      transition:0.3s;
+      color:#cbd5e1;
+    }
+
+    .nav-links a:hover{
+      color:#38bdf8;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      background:
+      linear-gradient(rgba(15,23,42,.85), rgba(15,23,42,.92)),
+      url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1400&auto=format&fit=crop') center/cover;
+    }
+
+    .hero h1{
+      font-size:4rem;
+      margin-bottom:15px;
+    }
+
+    .hero span{
+      color:#38bdf8;
+    }
+
+    .hero p{
+      max-width:700px;
+      margin:auto;
+      color:#cbd5e1;
+      font-size:1.1rem;
+    }
+
+    .hero-buttons{
+      margin-top:35px;
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:14px 28px;
+      border-radius:10px;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .btn-primary{
+      background:#38bdf8;
+      color:#0f172a;
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-3px);
+    }
+
+    .btn-secondary{
+      border:1px solid #38bdf8;
+      color:#38bdf8;
+    }
+
+    .btn-secondary:hover{
+      background:#38bdf8;
+      color:#0f172a;
+    }
+
+    /* SECTIONS */
+
+    section{
+      padding:100px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:2.5rem;
+      margin-bottom:10px;
+    }
+
+    .section-title p{
+      color:#94a3b8;
+    }
+
+    /* ABOUT */
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .about-card{
+      background:#1e293b;
+      padding:35px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .skill{
+      background:#0f172a;
+      border:1px solid rgba(255,255,255,0.1);
+      padding:10px 18px;
+      border-radius:999px;
+      color:#38bdf8;
+      font-size:0.9rem;
+    }
+
+    /* PROJECTS */
+
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+    }
+
+    .project-card{
+      background:#1e293b;
+      border-radius:20px;
+      overflow:hidden;
+      transition:0.3s;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+
+    .project-card:hover{
+      transform:translateY(-8px);
+    }
+
+    .project-image{
+      height:200px;
+      background-size:cover;
+      background-position:center;
+    }
+
+    .project-content{
+      padding:25px;
+    }
+
+    .project-content h3{
+      margin-bottom:15px;
+    }
+
+    .project-content p{
+      color:#cbd5e1;
+      margin-bottom:20px;
+    }
+
+    .project-tech{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .project-tech span{
+      background:#0f172a;
+      padding:7px 12px;
+      border-radius:999px;
+      font-size:0.8rem;
+      color:#38bdf8;
+    }
+
+    /* EXPERIENCE */
+
+    .timeline{
+      border-left:2px solid #38bdf8;
+      padding-left:30px;
+      max-width:800px;
+      margin:auto;
+    }
+
+    .timeline-item{
+      margin-bottom:40px;
+      position:relative;
+    }
+
+    .timeline-item::before{
+      content:'';
+      position:absolute;
+      width:18px;
+      height:18px;
+      background:#38bdf8;
+      border-radius:50%;
+      left:-40px;
+      top:5px;
+    }
+
+    .timeline-item h3{
+      margin-bottom:5px;
+    }
+
+    .timeline-item span{
+      color:#38bdf8;
+      font-size:0.95rem;
+    }
+
+    /* CONTACT */
+
+    .contact-card{
+      max-width:700px;
+      margin:auto;
+      background:#1e293b;
+      padding:40px;
+      border-radius:20px;
+      text-align:center;
+    }
+
+    .contact-links{
+      margin-top:25px;
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .contact-links a{
+      background:#0f172a;
+      padding:14px 24px;
+      border-radius:10px;
+      transition:0.3s;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .contact-links a:hover{
+      background:#38bdf8;
+      color:#0f172a;
+    }
+
+    footer{
+      padding:30px 0;
+      text-align:center;
+      color:#94a3b8;
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:2.8rem;
+      }
+
+      .about-grid{
+        grid-template-columns:1fr;
+      }
+
+      .nav-links{
+        gap:15px;
+        font-size:0.9rem;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+    <div class="container nav-content">
+      <div class="logo">Steven Nguyen</div>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <div class="container">
+      <h1>Hello, I'm <span>Steven Nguyen</span></h1>
+
+      <p>
+        Computer Science student at Seattle Pacific University passionate about
+        software engineering, web development, AI tools, and creating impactful
+        technology solutions.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#" class="btn btn-primary">Download Resume</a>
+        <a href="#projects" class="btn btn-secondary">View Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>About Me</h2>
+        <p>Learn more about my background and technical skills.</p>
+      </div>
+
+      <div class="about-grid">
+
+        <div class="about-card">
+          <h3>Who I Am</h3>
+
+          <p style="margin-top:20px;">
+            I'm a Computer Science student with experience in software engineering,
+            collaborative development, and building applications using modern
+            technologies. I enjoy solving technical problems and creating
+            meaningful software projects.
+          </p>
+
+          <p style="margin-top:20px;">
+            I have worked on projects involving C++, Python, JavaScript,
+            TypeScript, databases, networking, and web development.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <h3>Technical Skills</h3>
+
+          <div class="skills">
+            <div class="skill">C++</div>
+            <div class="skill">Python</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">TypeScript</div>
+            <div class="skill">React</div>
+            <div class="skill">Node.js</div>
+            <div class="skill">Git</div>
+            <div class="skill">Jira</div>
+            <div class="skill">MongoDB</div>
+            <div class="skill">SQL</div>
+            <div class="skill">HTML/CSS</div>
+            <div class="skill">Azure AI</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Projects</h2>
+        <p>Some projects and technical work I've completed.</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-image"
+            style="background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop')">
+          </div>
+
+          <div class="project-content">
+            <h3>Chrome Web Extension</h3>
+
+            <p>
+              Developed a browser extension that stores user information locally
+              and automatically fills forms on websites.
+            </p>
+
+            <div class="project-tech">
+              <span>JavaScript</span>
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>Chrome API</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image"
+            style="background-image:url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop')">
+          </div>
+
+          <div class="project-content">
+            <h3>Pac-Man Game Clone</h3>
+
+            <p>
+              Created a 2D Pac-Man inspired game using C++ with image assets and
+              custom game mechanics.
+            </p>
+
+            <div class="project-tech">
+              <span>C++</span>
+              <span>Game Logic</span>
+              <span>OOP</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image"
+            style="background-image:url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop')">
+          </div>
+
+          <div class="project-content">
+            <h3>Senior Capstone Project</h3>
+
+            <p>
+              Collaborated in a software engineering team to design and build a
+              full software solution using Agile methodologies.
+            </p>
+
+            <div class="project-tech">
+              <span>Software Engineering</span>
+              <span>Git</span>
+              <span>Jira</span>
+              <span>Team Project</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+
+  <section id="experience">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Experience</h2>
+        <p>Education and professional experience.</p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <h3>Seattle Pacific University</h3>
+          <span>B.S. Computer Science • 2024 - 2026</span>
+
+          <p style="margin-top:10px;">
+            Focused on software engineering, data structures, algorithms,
+            databases, networking, and systems design.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Seattle Seahawks / Sounders Pro Shop</h3>
+          <span>Sales Associate • 2021 - Present</span>
+
+          <p style="margin-top:10px;">
+            Delivered customer support, trained new employees, and developed
+            communication and leadership skills in a fast-paced environment.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Photography Business</h3>
+          <span>Co-Owner • 2025 - Present</span>
+
+          <p style="margin-top:10px;">
+            Manage editing workflows, collaborate with team members, and produce
+            professional photography content.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Let's connect and work together.</p>
+      </div>
+
+      <div class="contact-card">
+
+        <h3>Get In Touch</h3>
+
+        <p style="margin-top:20px;">
+          Feel free to contact me regarding software engineering opportunities,
+          collaborations, or projects.
+        </p>
+
+        <div class="contact-links">
+          <a href="mailto:Tonnguyen1234@gmail.com">Email</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Steven Nguyen. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
